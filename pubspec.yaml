@@ -1,7 +1,33 @@
-name: on_audio_query_workspace
+name: music_query_selector_workspace
+publish_to: none
 
 environment:
-  sdk: ">=2.17.0 <4.0.0"
+  sdk: "^3.12.2"
+
+workspace:
+  - packages/*
+  - packages/*/example
 
 dev_dependencies:
-  melos: ^3.0.1
+  melos: ^8.0.0
+
+melos:
+  repository: https://github.com/CesarArellano/music_query_selector
+
+  command:
+    bootstrap:
+      # Running "pub get" in parallel has known issues (dart-lang/pub#3404).
+      runPubGetInParallel: false
+
+  scripts:
+    reset:
+      run: melos clean && melos bootstrap
+      description: Useful to give your workspace a 'fresh start'
+
+    analyze:
+      exec: flutter analyze
+      description: Analyze code
+
+    format:
+      run: melos exec dart format . --fix
+      description: Run `dart format` for all packages.

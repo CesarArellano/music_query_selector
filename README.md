@@ -1,1 +1,1 @@
-packages/on_audio_query/README.md
+packages/music_query_selector/README.md

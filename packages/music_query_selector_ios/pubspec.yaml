@@ -1,0 +1,26 @@
+name: music_query_selector_ios
+resolution: workspace
+description: iOS implementation of the music_query_selector plugin.
+version: 1.1.1
+homepage: https://github.com/CesarArellano/music_query_selector/tree/main/packages/music_query_selector_ios
+
+environment:
+  sdk: '^3.12.2'
+  flutter: ">=3.44.4"
+
+dependencies:
+  music_query_selector_platform_interface: ^1.7.0
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    implements: music_query_selector
+    platforms:
+      ios:
+        pluginClass: MusicQuerySelectorPlugin

@@ -1,0 +1,38 @@
+# ========
+# author: Lucas Josino
+# github: https://github.com/LucJosin
+# website: https://www.lucasjosino.com/
+# ========
+name: music_query_selector_android
+resolution: workspace
+description: Android implementation of the music_query_selector plugin.
+version: 2.0.0
+homepage: https://github.com/LucJosin/music_query_selector/tree/main/packages/music_query_selector_android
+# pub.dev: https://pub.dev/packages/music_query_selector
+# pub.dev (Android): https://pub.dev/packages/music_query_selector_android
+
+environment:
+  sdk: '^3.12.2'
+  flutter: ">=3.44.4"
+
+dependencies:
+  # music_query_selector
+  music_query_selector_platform_interface: ^1.7.0
+
+  # Flutter
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  # Flutter
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    implements: music_query_selector
+    platforms:
+      android:
+        package: com.cesarArellano.music_query_selector
+        pluginClass: MusicQuerySelectorPlugin

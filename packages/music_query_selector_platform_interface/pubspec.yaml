@@ -1,0 +1,30 @@
+# ========
+# author: Lucas Josino
+# github: https://github.com/LucJosin
+# website: https://www.lucasjosino.com/
+# ========
+name: music_query_selector_platform_interface
+resolution: workspace
+description: A common platform interface for the [music_query_selector] plugin.
+homepage: https://github.com/LucJosin/music_query_selector/tree/main/packages/music_query_selector_platform_interface
+# NOTE: We strongly prefer non-breaking changes, even at the expense of a
+# less-clean API. See https://flutter.dev/go/platform-interface-breaking-changes
+version: 1.7.0
+
+environment:
+  sdk: '^3.12.2'
+  flutter: ">=3.44.4"
+
+dependencies:
+  # music_query_selector
+  plugin_platform_interface: ^2.1.2
+
+  # Flutter
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  # Flutter
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
