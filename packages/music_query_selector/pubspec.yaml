@@ -25,7 +25,7 @@ dependencies:
   # music_query_selector
   music_query_selector_platform_interface: ^1.7.0
   music_query_selector_ios: ^1.1.1
-  music_query_selector_android: ^1.1.0
+  music_query_selector_android: ^2.0.0
 
   # Flutter
   flutter:
