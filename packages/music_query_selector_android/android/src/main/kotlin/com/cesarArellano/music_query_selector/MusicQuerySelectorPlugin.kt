@@ -17,6 +17,7 @@ package com.cesarArellano.music_query_selector
 import android.media.MediaScannerConnection
 import android.os.Build
 import com.cesarArellano.music_query_selector.consts.Method
+import com.cesarArellano.music_query_selector.controllers.DeleteController
 import com.cesarArellano.music_query_selector.controllers.MethodController
 import com.cesarArellano.music_query_selector.controllers.PermissionController
 import io.flutter.Log
@@ -45,6 +46,7 @@ class MusicQuerySelectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware
 
     private var permissionController = PermissionController()
     private var methodController = MethodController()
+    private var deleteController = DeleteController()
 
     private var binding: ActivityPluginBinding? = null
 
@@ -113,6 +115,13 @@ class MusicQuerySelectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware
                 }
             }
 
+            // Delete songs using the native MediaStore confirmation dialog.
+            // Handled here (not via MethodController) because the result is
+            // delivered asynchronously through onActivityResult.
+            Method.DELETE_SONGS -> {
+                deleteController.deleteSongs(call, result)
+            }
+
             // Logging
             Method.SET_LOG_CONFIG -> {
                 // Log level
@@ -161,6 +170,9 @@ class MusicQuerySelectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware
         // Add to controller the permission to listen to the request result.
         this.binding = binding
         binding.addRequestPermissionsResultListener(permissionController)
+
+        // Listen to the system delete dialog result.
+        binding.addActivityResultListener(deleteController)
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
@@ -180,6 +192,7 @@ class MusicQuerySelectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware
         // Remove the permission listener
         if (binding != null) {
             binding!!.removeRequestPermissionsResultListener(permissionController)
+            binding!!.removeActivityResultListener(deleteController)
         }
 
         this.binding = null

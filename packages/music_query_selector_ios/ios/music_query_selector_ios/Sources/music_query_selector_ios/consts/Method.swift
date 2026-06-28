@@ -13,6 +13,7 @@ struct Method {
     static let QUERY_GENRES = "queryGenres"
     static let QUERY_PLAYLISTS = "queryPlaylists"
     static let QUERY_ARTWORK = "queryArtwork"
+    static let QUERY_ARTWORK_COLOR = "queryArtworkColor"
     static let QUERY_AUDIOS_FROM = "queryAudiosFrom"
     static let QUERY_WITH_FILTERS = "queryWithFilters"
     static let QUERY_ALL_PATHS = "queryAllPath"

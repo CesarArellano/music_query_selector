@@ -206,6 +206,21 @@ class MethodChannelMusicQuerySelector extends MusicQuerySelectorPlatform {
   }
 
   @override
+  Future<int?> queryArtworkColor(
+    int id,
+    ArtworkType type,
+  ) async {
+    final int? artworkColor = await _channel.invokeMethod(
+      "queryArtworkColor",
+      {
+        "type": type.index,
+        "id": id,
+      },
+    );
+    return artworkColor;
+  }
+
+  @override
   Future<List<SongModel>> queryFromFolder(
     String path, {
     SongSortType? sortType,
@@ -233,6 +248,17 @@ class MethodChannelMusicQuerySelector extends MusicQuerySelectorPlatform {
       "queryAllPath",
     );
     return resultAllPath.cast<String>();
+  }
+
+  @override
+  Future<bool> deleteSongs(List<int> ids) async {
+    final bool resultDelete = await _channel.invokeMethod(
+      "deleteSongs",
+      {
+        "ids": ids,
+      },
+    );
+    return resultDelete;
   }
 
   @override

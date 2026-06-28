@@ -385,6 +385,38 @@ class MusicQuerySelector {
     );
   }
 
+  /// Used to return the dominant color of an artwork as an ARGB value.
+  ///
+  /// Parameters:
+  ///
+  /// * [id] is the [Song] or [Album] id.
+  /// * [type] is used to define if artwork is from audios or albums.
+  ///
+  /// Usage and Performance:
+  ///
+  /// * The color is computed natively from the already-decoded artwork
+  /// ([androidx.palette] on Android, Core Image on iOS), avoiding a second
+  /// decode plus palette pass on the Dart side.
+  ///
+  /// Important:
+  ///
+  /// * Returns null when the item has no artwork.
+  /// * The returned value maps directly to a Flutter `Color(value)`.
+  ///
+  /// Platforms:
+  ///
+  /// |   Android   |   IOS   |   Web   |
+  /// |--------------|-----------------|-----------------|
+  /// | `✔️` | `✔️` | `❌` | <br>
+  ///
+  /// See more about [platforms support](https://github.com/LucJosin/music_query_selector/blob/main/PLATFORMS.md)
+  Future<int?> queryArtworkColor(
+    int id,
+    ArtworkType type,
+  ) async {
+    return platform.queryArtworkColor(id, type);
+  }
+
   /// Used to return Songs Info from a specific [Folder] based in [SongModel].
   ///
   /// Parameters:
@@ -437,6 +469,23 @@ class MusicQuerySelector {
   /// See more about [platforms support](https://github.com/LucJosin/music_query_selector/blob/main/PLATFORMS.md)
   Future<List<String>> queryAllPath() async {
     return platform.queryAllPath();
+  }
+
+  /// Deletes the given audio [ids] from the device using the native MediaStore
+  /// flow.
+  ///
+  /// On Android 11+ this shows the system confirmation dialog; the future
+  /// resolves to true only when the user confirms and the file is removed.
+  ///
+  /// Platforms:
+  ///
+  /// |   Android   |   IOS   |   Web   |
+  /// |--------------|-----------------|-----------------|
+  /// | `✔️` | `❌` | `❌` | <br>
+  ///
+  /// See more about [platforms support](https://github.com/LucJosin/music_query_selector/blob/main/PLATFORMS.md)
+  Future<bool> deleteSongs(List<int> ids) async {
+    return platform.deleteSongs(ids);
   }
 
   //Playlist methods

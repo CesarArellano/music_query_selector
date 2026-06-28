@@ -15,9 +15,11 @@ object Method {
     const val QUERY_GENRES = "queryGenres"
     const val QUERY_PLAYLISTS = "queryPlaylists"
     const val QUERY_ARTWORK = "queryArtwork"
+    const val QUERY_ARTWORK_COLOR = "queryArtworkColor"
     const val QUERY_AUDIOS_FROM = "queryAudiosFrom"
     const val QUERY_WITH_FILTERS = "queryWithFilters"
     const val QUERY_ALL_PATHS = "queryAllPath"
+    const val DELETE_SONGS = "deleteSongs"
 
     // Playlist methods
     const val CREATE_PLAYLIST = "createPlaylist"

@@ -24,6 +24,8 @@ public class MethodController {
             WithFiltersQuery().queryWithFilters()
         case Method.QUERY_ARTWORK:
             ArtworkQuery().queryArtwork()
+        case Method.QUERY_ARTWORK_COLOR:
+            ArtworkColorQuery().queryArtworkColor()
         // The playlist for [IOS] is completely limited, the developer can only:
         //   * Create playlist
         //   * Add item to playlist (Unsuported, for now)

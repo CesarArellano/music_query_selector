@@ -339,6 +339,32 @@ abstract class MusicQuerySelectorPlatform extends PlatformInterface {
     throw UnimplementedError('queryArtwork() has not been implemented.');
   }
 
+  /// Used to return the dominant color of an artwork as an ARGB value.
+  ///
+  /// Parameters:
+  ///
+  /// * [id] is the [Song] or [Album] id.
+  /// * [type] is used to define if artwork is from audios or albums.
+  ///
+  /// Important:
+  ///
+  /// * The color is computed natively from the already-decoded artwork, which
+  /// is cheaper than decoding the image again on the Dart side.
+  /// * Returns null when the item has no artwork.
+  /// * The returned value maps directly to a Flutter `Color(value)`.
+  ///
+  /// Platforms:
+  ///
+  /// |   Android   |   IOS   |   Web   |
+  /// |--------------|-----------------|-----------------|
+  /// | `✔️` | `✔️` | `❌` | <br>
+  Future<int?> queryArtworkColor(
+    int id,
+    ArtworkType type,
+  ) {
+    throw UnimplementedError('queryArtworkColor() has not been implemented.');
+  }
+
   /// Used to return Songs Info from a specific [Folder] based in [SongModel].
   ///
   /// Parameters:
@@ -386,6 +412,20 @@ abstract class MusicQuerySelectorPlatform extends PlatformInterface {
   /// See more about [platforms support](https://github.com/LucJosin/music_query_selector/blob/main/music_query_selector/PLATFORMS.md)
   Future<List<String>> queryAllPath() {
     throw UnimplementedError('queryAllPath() has not been implemented.');
+  }
+
+  /// Deletes the given audio [ids] from the device using the native MediaStore
+  /// flow (system confirmation dialog on Android 11+).
+  ///
+  /// Returns true only when the user confirms and the file is removed.
+  ///
+  /// Platforms:
+  ///
+  /// |   Android   |   IOS   |   Web   |
+  /// |--------------|-----------------|-----------------|
+  /// | `✔️` | `❌` | `❌` | <br>
+  Future<bool> deleteSongs(List<int> ids) {
+    throw UnimplementedError('deleteSongs() has not been implemented.');
   }
 
   //Playlist methods
